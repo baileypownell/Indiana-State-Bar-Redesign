@@ -1,0 +1,400 @@
+/* =========================
+        NAVIGATION BAR
+===========================*/
+
+header {
+  background: rgba(255, 255, 255, 0.65);
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+#logo-alignment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.fa-bars {
+  color: $secondary-color;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 0 20px;
+}
+/* search bar */
+#search-box {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  @include desktop {
+    padding: 0 0 10px 0;
+  }
+}
+
+#search-box input {
+  padding: 10px;
+  outline: none;
+  transition: background-color .5s;
+  @include desktop {
+    width: 50%;
+  }
+}
+
+#search-box:hover input {
+  background-color: $secondary-color;
+  color: white;
+}
+
+.search-btn {
+  font-size: 20px;
+}
+
+.search-txt {
+  border-radius: 20px;
+  border: none;
+  width: 100%;
+}
+
+#magnifying-glass {
+  color: $secondary-color;
+  padding-left: 10px;
+  font-size: 25px;
+  transition-property: color transform -webkit-transform -ms-transform;
+  transition-duration: .4s;
+  cursor: pointer;
+  &:hover {
+    color: rgba(0, 5, 46, 0.8);
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+/* Functionality of opening/closing navigation links */
+
+.far {
+  font-size: 35px;
+  color: white;
+  transition-property: color, transform, -webkit-transform, -ms-transform;
+  transition-duration: .5s;
+  &:hover {
+    color: $link-hover-color;
+    @include prefix(transform, scale(1.2), webkit ms);
+  }
+}
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 5, 46, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+#close-button-container {
+  text-align: center;
+  padding: 25px 0 50px 0;
+}
+
+nav ul,
+nav ul li {
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  color: white;
+}
+
+/* styling the .not-parent links */
+
+.not-parent {
+  font-size: 1.5rem;
+  display: block;
+  padding: 10px 0;
+  cursor: pointer;
+  @include link-hover;
+  @include desktop {
+    font-size: 1.75rem;
+    padding: 20px 0;
+    }
+  }
+
+
+.not-parent:hover {
+  @include link-text-shadow;
+  @include link-scale;
+}
+
+/* since the <a> elements have to be styled separately... */
+
+.not-parent a {
+  transition-property: color;
+  transition-duration: .3s;
+}
+
+.not-parent:hover a {
+  color: $link-hover-color;
+}
+
+
+/* styling links with dropdown items */
+
+.dropdownparent {
+  color: white;
+  font-size: 1.5rem;
+  display: block;
+  padding: 10px 0;
+  cursor: pointer;
+  transition-property: color, text-shadow, transform, -webkit-transform, -ms-transform;
+  transition-duration: .3s;
+  @include desktop {
+    font-size: 1.75rem;
+    padding: 20px 0;
+  }
+}
+
+.dropdownparent:hover {
+  color: $link-hover-color;
+  @include link-text-shadow;
+  @include link-scale;
+}
+
+/* styling the dropdown items themselves */
+
+.nav-dropdown li {
+  padding: 5px 0;
+  font-size: 1rem;
+  @include link-hover;
+}
+
+.nav-dropdown li:first-of-type {
+  padding: 20px 0 0 0;
+}
+
+.nav-dropdown li:hover {
+  @include link-text-shadow;
+  @include link-scale;
+}
+
+.nav-dropdown a {
+  transition-property: color;
+  transition-duration: .3s;
+}
+
+.nav-dropdown li:hover a {
+  color: $link-hover-color;
+}
+
+/* styling the dropdown items' down icon */
+
+.dropdownparent:hover .fa-chevron-down {
+  color: $link-hover-color;
+}
+
+.fa-chevron-down {
+  padding-left: 10px;
+  color: white;
+}
+
+/* =========================
+        HOME PAGE
+===========================*/
+
+#home {
+  width: 100%;
+  height: 100vh;
+  background-color: $primary-color;
+  background-image: url("images/WASHINGTON.jpg");
+  @include background-image;
+  background-attachment: fixed; /* parallax scrolling effect */
+}
+
+
+#benjamin-harrison {
+  font-family: 'Libre Baskerville', serif;
+  width: 100%;
+  color: white;
+  font-size: 1.25rem;
+  line-height: 1.75;
+  margin: 0 auto;
+  padding: 20vw 10vw 5vw;
+  border-bottom: 2px solid white;
+  background-image: url("images/benjaminHarrisonPortrait.jpg");
+  @include background-image;
+}
+
+#links {
+  @include flex-row;
+  flex-wrap: wrap;
+  img {
+    height: 6vw;
+    min-height: 75px;
+    cursor: pointer;
+    margin: 1vw 1vw 5vw;
+    transition-property: transform, -webkit-transform, -ms-transform;
+    transition-duration: .3s;
+    &:hover {
+      @include link-scale;
+    }
+  }
+}
+
+#isba-access {
+  background-image: url("images/man.jpg");
+  @include background-image;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5vw 2.5vw;
+  h3 {
+    text-align: center;
+    color: white;
+  }
+  @include desktop {
+    align-items: flex-end;
+    padding: 2vw 5vw;
+  }
+}
+
+
+#news {
+  display: flex;
+  flex-direction: column; /*row*/
+  justify-content: center;
+  align-items: center; /*flexstart*/
+  width: 100vw;
+  background: linear-gradient(to bottom right, rgba(11, 98, 153, 0.74), rgba(19, 173, 169, 0.6)); // rgba(19, 150, 173, 0.6)
+  h2 {
+    color: white;
+    line-height: 2;
+    font-size: 2.5rem;
+  }
+  @include desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }
+}
+
+#news div {
+  @include flex-row;
+  padding: 3vw 0;
+  .fab {
+    @include social-media-icons;
+    color: white;
+    transition: transform, -webkit-transform, -ms-transform, color .3s;
+    &:hover {
+    color: rgba(0, 0, 0, 0.84);
+    @include prefix (transform, scale(1.15), webkit ms);
+    }
+  }
+}
+
+section {
+  opacity: 0;
+  @include prefix(transform, translate(0, 100px), webkit ms);
+  transition: all 3s;
+  padding: 4vw 8vw;
+  display: flex;
+  flex-direction: column;
+  button {
+    @include button;
+    margin: 50px 0;
+    font-size: 25px;
+    background-color: $button-color-primary;
+    border: 2px solid $button-color-primary;
+    &:hover {
+      @include footerandsection-button-hover;
+    }
+  }
+  @include desktop {
+    width: 33.3%;
+    padding: 2vw;
+  }
+}
+
+.date {
+  font-weight: 700;
+  color: #292929;
+  font-family: 'Libre Baskerville', serif;
+  padding: 20px 0;
+}
+
+/* =========================
+        FOOTER
+===========================*/
+
+footer {
+  background-image: url("images/indianacapitolinterior.jpg");
+  @include background-image;
+  background-attachment: fixed;
+  button {
+    margin: 0 auto;
+    background-color: $button-color-primary;
+    border: 2px solid $button-color-primary;
+    @include button;
+    margin: 0 auto;
+    transition-property: background-color color border transform, -webkit-transform, -ms-transform;
+    &:hover {
+      @include footerandsection-button-hover;
+    }
+  }
+
+  i {
+    color: white;
+    @include social-media-icons;
+    transition: transform, -webkit-transform, -ms-transform, color .3s;
+    &:hover {
+      @include prefix(transform, scale(1.15), webkits ms);
+      color: rgba(19, 173, 169, 0.9);
+    }
+  }
+}
+
+#parent-div {
+  padding: 10vw 0;
+  margin: 0;
+  @include desktop {
+    padding: 5vw 0;
+  }
+  div {
+    padding: 2.5vw 10vw;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    margin: 0 15vw;
+    text-align: center;
+    font-size: 1rem;
+    h4 {
+      font-size: 2rem;
+      color: white;
+    }
+    p, a {
+      color: white;
+    }
+  }
+}

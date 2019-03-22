@@ -1,0 +1,574 @@
+/* IMPORTS */
+/* Variables */
+/* Mixins */
+/* Media query mixins */
+/* =========================
+        GENERAL
+===========================*/
+* {
+  box-sizing: border-box;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  margin-bottom: 0;
+  margin-inline-end: 0;
+  margin-top: 0; }
+
+a {
+  text-decoration: none; }
+
+:root {
+  font-size: 14px; }
+  @media screen and (min-width: 1200px) {
+    :root {
+      font-size: 16px; } }
+
+html, body {
+  margin: 0px;
+  font-family: 'Krub', sans-serif;
+  background-color: white;
+  scroll-behavior: smooth;
+  height: 100%; }
+
+body {
+  width: 100vw;
+  overflow-x: hidden; }
+
+p,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  color: white; }
+
+h1 {
+  text-align: center;
+  color: #00bbdd;
+  font-size: 3rem;
+  padding: 2.5vw 0;
+  margin: 100px 5vw;
+  border-top: 2px solid #00bbdd;
+  border-bottom: 2px solid #00bbdd; }
+
+h2 {
+  text-align: center;
+  color: #00073d;
+  font-size: 3.5rem;
+  padding: 3vw 0;
+  text-shadow: 5px 5px 15px #292929; }
+
+h3 {
+  text-align: center;
+  color: #00073d;
+  font-size: 3rem;
+  padding: 1vw 0; }
+
+/* =========================
+        NAVIGATION BAR
+===========================*/
+header {
+  background: rgba(255, 255, 255, 0.65);
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column; }
+
+#logo-alignment {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; }
+
+.fa-bars {
+  color: #00073d;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 0 20px; }
+
+/* search bar */
+#search-box {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center; }
+  @media screen and (min-width: 1200px) {
+    #search-box {
+      padding: 0 0 10px 0; } }
+
+#search-box input {
+  padding: 10px;
+  outline: none;
+  transition: background-color .5s; }
+  @media screen and (min-width: 1200px) {
+    #search-box input {
+      width: 50%; } }
+
+#search-box:hover input {
+  background-color: #00073d;
+  color: white; }
+
+.search-btn {
+  font-size: 20px; }
+
+.search-txt {
+  border-radius: 20px;
+  border: none;
+  width: 100%; }
+
+#magnifying-glass {
+  color: #00073d;
+  padding-left: 10px;
+  font-size: 25px;
+  transition-property: color transform -webkit-transform -ms-transform;
+  transition-duration: .4s;
+  cursor: pointer; }
+  #magnifying-glass:hover {
+    color: rgba(0, 5, 46, 0.8);
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg); }
+
+/* Functionality of opening/closing navigation links */
+.far {
+  font-size: 35px;
+  color: white;
+  transition-property: color, transform, -webkit-transform, -ms-transform;
+  transition-duration: .5s; }
+  .far:hover {
+    color: #ede646;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2); }
+
+.overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 5, 46, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s; }
+
+.overlay-content {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 50px; }
+
+#close-button-container {
+  text-align: center;
+  padding: 25px 0 50px 0; }
+
+nav ul,
+nav ul li {
+  margin: 0;
+  padding: 0; }
+
+nav a {
+  color: white; }
+
+/* styling the .not-parent links */
+.not-parent {
+  font-size: 1.5rem;
+  display: block;
+  padding: 10px 0;
+  cursor: pointer;
+  transition-property: text-shadow, transform, -webkit-transform, -ms-transform;
+  transition-duration: .3s; }
+  @media screen and (min-width: 1200px) {
+    .not-parent {
+      font-size: 1.75rem;
+      padding: 20px 0; } }
+
+.not-parent:hover {
+  text-shadow: 3px 2px 18px #ede646;
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05); }
+
+/* since the <a> elements have to be styled separately... */
+.not-parent a {
+  transition-property: color;
+  transition-duration: .3s; }
+
+.not-parent:hover a {
+  color: #ede646; }
+
+/* styling links with dropdown items */
+.dropdownparent {
+  color: white;
+  font-size: 1.5rem;
+  display: block;
+  padding: 10px 0;
+  cursor: pointer;
+  transition-property: color, text-shadow, transform, -webkit-transform, -ms-transform;
+  transition-duration: .3s; }
+  @media screen and (min-width: 1200px) {
+    .dropdownparent {
+      font-size: 1.75rem;
+      padding: 20px 0; } }
+
+.dropdownparent:hover {
+  color: #ede646;
+  text-shadow: 3px 2px 18px #ede646;
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05); }
+
+/* styling the dropdown items themselves */
+.nav-dropdown li {
+  padding: 5px 0;
+  font-size: 1rem;
+  transition-property: text-shadow, transform, -webkit-transform, -ms-transform;
+  transition-duration: .3s; }
+
+.nav-dropdown li:first-of-type {
+  padding: 20px 0 0 0; }
+
+.nav-dropdown li:hover {
+  text-shadow: 3px 2px 18px #ede646;
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05); }
+
+.nav-dropdown a {
+  transition-property: color;
+  transition-duration: .3s; }
+
+.nav-dropdown li:hover a {
+  color: #ede646; }
+
+/* styling the dropdown items' down icon */
+.dropdownparent:hover .fa-chevron-down {
+  color: #ede646; }
+
+.fa-chevron-down {
+  padding-left: 10px;
+  color: white; }
+
+/* =========================
+        HOME PAGE
+===========================*/
+#home {
+  width: 100%;
+  height: 100vh;
+  background-color: #00bbdd;
+  background-image: url("images/WASHINGTON.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  /* parallax scrolling effect */ }
+
+#benjamin-harrison {
+  font-family: 'Libre Baskerville', serif;
+  width: 100%;
+  color: white;
+  font-size: 1.25rem;
+  line-height: 1.75;
+  margin: 0 auto;
+  padding: 20vw 10vw 5vw;
+  border-bottom: 2px solid white;
+  background-image: url("images/benjaminHarrisonPortrait.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; }
+
+#links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap; }
+  #links img {
+    height: 6vw;
+    min-height: 75px;
+    cursor: pointer;
+    margin: 1vw 1vw 5vw;
+    transition-property: transform, -webkit-transform, -ms-transform;
+    transition-duration: .3s; }
+    #links img:hover {
+      -webkit-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+      transform: scale(1.05); }
+
+#isba-access {
+  background-image: url("images/man.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5vw 2.5vw; }
+  #isba-access h3 {
+    text-align: center;
+    color: white; }
+  @media screen and (min-width: 1200px) {
+    #isba-access {
+      align-items: flex-end;
+      padding: 2vw 5vw; } }
+
+#news {
+  display: flex;
+  flex-direction: column;
+  /*row*/
+  justify-content: center;
+  align-items: center;
+  /*flexstart*/
+  width: 100vw;
+  background: linear-gradient(to bottom right, rgba(11, 98, 153, 0.74), rgba(19, 173, 169, 0.6)); }
+  #news h2 {
+    color: white;
+    line-height: 2;
+    font-size: 2.5rem; }
+  @media screen and (min-width: 1200px) {
+    #news {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: 4vw;
+      padding-right: 4vw; } }
+
+#news div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 3vw 0; }
+  #news div .fab {
+    padding: 15px 5px 5px 5px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform, -webkit-transform, -ms-transform, color .3s;
+    color: white;
+    transition: transform, -webkit-transform, -ms-transform, color .3s; }
+    #news div .fab:hover {
+      color: rgba(0, 0, 0, 0.84);
+      -webkit-transform: scale(1.15);
+      -ms-transform: scale(1.15);
+      transform: scale(1.15); }
+
+section {
+  opacity: 0;
+  -webkit-transform: translate(0, 100px);
+  -ms-transform: translate(0, 100px);
+  transform: translate(0, 100px);
+  transition: all 3s;
+  padding: 4vw 8vw;
+  display: flex;
+  flex-direction: column; }
+  section button {
+    margin: 10px 0;
+    color: white;
+    font-size: 20px;
+    display: block;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px 15px;
+    transition: transform, -webkit-transform, -ms-transform, color, border, background-color;
+    transition-duration: .3s;
+    margin: 50px 0;
+    font-size: 25px;
+    background-color: #242424;
+    border: 2px solid #242424; }
+    section button:hover {
+      background-color: white;
+      color: #141414;
+      border: 2px solid #242424;
+      -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      transform: scale(1.1); }
+  @media screen and (min-width: 1200px) {
+    section {
+      width: 33.3%;
+      padding: 2vw; } }
+
+.date {
+  font-weight: 700;
+  color: #292929;
+  font-family: 'Libre Baskerville', serif;
+  padding: 20px 0; }
+
+/* =========================
+        FOOTER
+===========================*/
+footer {
+  background-image: url("images/indianacapitolinterior.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; }
+  footer button {
+    margin: 0 auto;
+    background-color: #242424;
+    border: 2px solid #242424;
+    margin: 10px 0;
+    color: white;
+    font-size: 20px;
+    display: block;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 10px 15px;
+    transition: transform, -webkit-transform, -ms-transform, color, border, background-color;
+    transition-duration: .3s;
+    margin: 0 auto;
+    transition-property: background-color color border transform, -webkit-transform, -ms-transform; }
+    footer button:hover {
+      background-color: white;
+      color: #141414;
+      border: 2px solid #242424;
+      -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+      transform: scale(1.1); }
+  footer i {
+    color: white;
+    padding: 15px 5px 5px 5px;
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform, -webkit-transform, -ms-transform, color .3s;
+    transition: transform, -webkit-transform, -ms-transform, color .3s; }
+    footer i:hover {
+      -webkits-transform: scale(1.15);
+      -ms-transform: scale(1.15);
+      transform: scale(1.15);
+      color: rgba(19, 173, 169, 0.9); }
+
+#parent-div {
+  padding: 10vw 0;
+  margin: 0; }
+  @media screen and (min-width: 1200px) {
+    #parent-div {
+      padding: 5vw 0; } }
+  #parent-div div {
+    padding: 2.5vw 10vw;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    margin: 0 15vw;
+    text-align: center;
+    font-size: 1rem; }
+    #parent-div div h4 {
+      font-size: 2rem;
+      color: white; }
+    #parent-div div p, #parent-div div a {
+      color: white; }
+
+/* logos */
+#header-logo {
+  width: 250px;
+  height: auto;
+  padding-left: 0px; }
+
+/* Sopme of the buttons */
+.two-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 2vw; }
+  .two-links button {
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 0 8px;
+    padding: 20px;
+    border-radius: 50px;
+    background-color: #00073d;
+    border: 2px solid #00073d;
+    box-shadow: 5px 3px 20px gray;
+    transition-property: background-color, border, transform, -webkit-transform, -ms-transform, box-shadow;
+    transition-duration: .4s; }
+    .two-links button:hover {
+      background-color: #0d0779;
+      border: 2px solid #0d0779;
+      -webkit-transform: scale(1.05);
+      -ms-transform: scale(1.05);
+      transform: scale(1.05);
+      box-shadow: 10px 5px 30px gray; }
+
+#isba-access button {
+  background-color: #590000;
+  border: 2px solid #590000;
+  margin: 10px 0;
+  color: white;
+  font-size: 20px;
+  display: block;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 10px 15px;
+  transition: transform, -webkit-transform, -ms-transform, color, border, background-color;
+  transition-duration: .3s; }
+  #isba-access button:hover {
+    background-color: #6e0000;
+    border: 2px solid white;
+    -webkit-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1); }
+
+/* Form */
+form {
+  background-color: rgba(0, 0, 0, 0.81);
+  border-radius: 50px;
+  min-width: 350px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 1.25rem;
+  text-align: center; }
+  @media screen and (min-width: 768px) {
+    form {
+      width: 50%; } }
+  @media screen and (min-width: 1200px) {
+    form {
+      width: unset;
+      padding: 50px;
+      min-width: 450px; } }
+  form a {
+    color: white; }
+  form input {
+    border-radius: 20px;
+    border: 2px solid white; }
+    form input:hover {
+      border-radius: 2px solid #6e0000; }
+
+label,
+input,
+form div {
+  padding: 10px 0; }
+
+/* Social Media Icons */
+/* Javascript Animation Classes */
+.visible {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0); }
+
+/* For JS Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.7, 0.7);
+    -ms-transform: scale(0.7, 0.7);
+    transform: scale(0.7, 0.7); }
+  /* from {opacity: 0; transform: scale(.7,.7)} */
+  to {
+    opacity: 1; } }
+.fade-in-element {
+  animation: fade-in 1.5s; }
+
+.hidden {
+  opacity: 0; }
+
+/*# sourceMappingURL=main.css.map */

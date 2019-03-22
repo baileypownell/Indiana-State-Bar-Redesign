@@ -1,0 +1,162 @@
+/* Variables */
+
+$primary-blue: #00bbdd;
+$secondary-blue: #00073d;
+$accent: #590000;
+$link-hover-color: #ede646;
+$button-color-primary: #242424;
+$button-color-primary-hover: #141414;
+
+$primary-color: $primary-blue;
+$secondary-color: $secondary-blue;
+
+/* Mixins */
+
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    #{'-' + $prefix + '-' + $property}: $value;
+  }
+
+  // Output standard non-prefixed declaration
+  #{$property}: $value;
+}
+
+@mixin link-hover {
+  transition-property: text-shadow, transform, -webkit-transform, -ms-transform;
+  transition-duration: .3s;
+}
+
+@mixin link-text-shadow {
+  text-shadow: 3px 2px 18px $link-hover-color;
+}
+
+@mixin link-scale {
+  @include prefix(transform, scale(1.05), webkit ms);
+}
+
+@mixin background-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@mixin button {
+  margin: 10px 0;
+  color: white;
+  font-size: 20px;
+  display: block;
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 10px 15px;
+  transition: transform, -webkit-transform, -ms-transform, color, border, background-color;
+  transition-duration: .3s;
+}
+
+@mixin social-media-icons {
+  padding: 15px 5px 5px 5px;
+  font-size: 30px;
+  cursor: pointer;
+  transition: transform, -webkit-transform, -ms-transform, color .3s;
+}
+
+@mixin footerandsection-button-hover {
+  background-color: white;
+  color: #141414;
+  border: 2px solid $button-color-primary;
+  @include prefix(transform, scale(1.1), webkit ms);
+}
+
+/* Media query mixins */
+
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+
+/* =========================
+        GENERAL
+===========================*/
+
+* {
+  box-sizing: border-box;
+  margin-block-end:0;
+  margin-block-start: 0;
+  margin-bottom:0;
+  margin-inline-end: 0;
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  font-size: 14px;
+  @include desktop {
+    font-size: 16px;
+  }
+}
+
+html, body {
+  margin: 0px;
+  font-family: 'Krub', sans-serif;
+  background-color: white;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+p,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  color: #00bbdd;
+  font-size: 3rem;
+  padding: 2.5vw 0;
+  margin: 100px 5vw;;
+  border-top: 2px solid $primary-color;
+  border-bottom: 2px solid $primary-color;
+}
+
+h2 {
+  text-align: center;
+  color: $secondary-color;
+  font-size: 3.5rem;
+  padding: 3vw 0;
+  text-shadow: 5px 5px 15px #292929;
+}
+
+h3 {
+  text-align: center;
+  color: $secondary-color;
+  font-size: 3rem;
+  padding: 1vw 0;
+}
