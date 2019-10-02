@@ -1,4 +1,4 @@
-
+(function(){
 
 // parallax effect for home image
 
@@ -6,23 +6,21 @@ $(window).scroll(function() {
   parallax();
 })
 
-function parallax() {
-  var wScroll = $(window).scrollTop();
-
+const parallax = () => {
+  let wScroll = $(window).scrollTop();
   $('.parallax').css('background-position', 'center '+(wScroll*-0.5)+'px')
 }
-
 
 
 // hiding the dropdown items, which are all in six unordered lists, but keeping the main options visible of course
  $('.dropdownparent li').hide();
 
-function openNav() {
+const openNav = () => {
   document.getElementById("myNav").style.width = "100%";
   $('.overlay-content').hide().fadeIn(1500);
 }
 
-function closeNav() {
+const closeNav = () => {
   document.getElementById("myNav").style.width = "0%";
   $('.overlay-content').hide().fadeOut(1500);
 }
@@ -35,25 +33,33 @@ $('.dropdownparent').on('click', function() {
 
 $('#home').fadeIn();
 
+// Events
+let hamburger = document.getElementById('hamburger');
+console.log(hamburger);
+hamburger.addEventListener('click', openNav);
+
+let closeMenu = document.getElementById('close-button-container');
+closeMenu.addEventListener('click', closeNav);
+
 
 // animations for fading in and resizing: https://eddyerburgh.me/animate-elements-scrolled-view-vanilla-js
 
-var animateHTML = function() {
-  var elems;
-  var windowHeight;
-  function init() {
+const animateHTML = () => {
+  let elems;
+  let windowHeight;
+  const init = () => {
     elems = document.querySelectorAll('.hidden');
     windowHeight = window.innerHeight;
     addEventHandlers();
     checkPosition();
   }
-  function addEventHandlers() {
+  const addEventHandlers = () => {
     window.addEventListener('scroll', checkPosition);
     window.addEventListener('resize', init);
   }
-  function checkPosition() {
-    for (var i = 0; i < elems.length; i++) {
-      var positionFromTop = elems[i].getBoundingClientRect().top;
+  const checkPosition = () => {
+    for (let i = 0; i < elems.length; i++) {
+      let positionFromTop = elems[i].getBoundingClientRect().top;
       if (positionFromTop - windowHeight <= 0) {
         elems[i].className = elems[i].className.replace(
           'hidden',
@@ -83,3 +89,4 @@ $(document).on("scroll", function () {
     }
   }
 })
+})();
