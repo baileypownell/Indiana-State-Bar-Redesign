@@ -4,4 +4,4 @@ This is how I would update the Indiana State bar website, if given the chance.
 
 ## https://www.inbar.org/
 
-![portfolio section](screengrab.jpg)
+![homepage](screengrab.JPG)
